@@ -47,6 +47,18 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      <section className={styles.aboutPreview}>
+        <div className={`glass-card ${styles.aboutCard}`}>
+          <h2 className={styles.sectionTitle} style={{ marginBottom: '1.5rem' }}>How It Works</h2>
+          <p className={styles.aboutText}>
+            Our application leverages the power of <strong>face-api.js</strong> and modern web technologies to process video streams locally. By analyzing micro-expressions in real-time, the AI model predicts emotional states with high accuracy, all while ensuring your privacy is strictly maintained.
+          </p>
+          <Link to="/about" className="btn-secondary" style={{ marginTop: '2.5rem', padding: '0.85rem 2rem', fontSize: '1.05rem' }}>
+            Learn More About Our Tech
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
