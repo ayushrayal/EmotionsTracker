@@ -1,0 +1,155 @@
+.wrapper {
+  width: 640px;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 28px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.4),
+    0 0 0 1px var(--border-color);
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--emotion-color) 8%, transparent), transparent 60%);
+  pointer-events: none;
+}
+
+.emoji {
+  font-size: 3rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px var(--emotion-color));
+  animation: pop 0.3s ease;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emotionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.statusBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statusBadge.stable {
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--fearful); /* reuse green */
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.statusBadge.uncertain {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--happy); /* reuse yellow */
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.emotion {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.confidence {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.85;
+  animation: pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.noFace {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 28px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.noFaceIcon {
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.noFaceText {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.statusText {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.75); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.85; }
+  50%       { transform: scale(1.6); opacity: 0.3;  }
+}
+
+@media (max-width: 680px) {
+  .wrapper { margin-top: 14px; }
+  .card, .noFace { padding: 18px 20px; }
+  .emoji { font-size: 2.4rem; }
+  .emotion { font-size: 1.5rem; }
+}
