@@ -30,8 +30,8 @@ export default function Signup() {
 
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h2 className={styles.title}>Sign Up</h2>
+      <form className={`glass-card ${styles.form}`} onSubmit={handleSubmit}>
+        <h2 className={styles.title}>Create Account</h2>
         {error && <div className={styles.error}>{error}</div>}
         <div className={styles.field}>
           <label>Username</label>
@@ -60,8 +60,8 @@ export default function Signup() {
             required 
           />
         </div>
-        <button type="submit" className={styles.submitBtn} disabled={loading}>
-          {loading ? 'Signing up...' : 'Sign Up'}
+        <button type="submit" className={`btn-primary ${styles.submitBtn}`} disabled={loading}>
+          {loading ? 'Creating Account...' : 'Sign Up'}
         </button>
         <p className={styles.redirect}>
           Already have an account? <Link to="/login">Login</Link>

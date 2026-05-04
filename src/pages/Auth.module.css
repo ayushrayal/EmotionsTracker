@@ -1,94 +1,89 @@
 .container {
+  min-height: calc(100vh - 80px);
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #0f0f0f;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .form {
-  background: #1a1a1a;
-  padding: 2.5rem;
-  border-radius: 12px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .title {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
   text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .error {
-  background: #fed7d7;
-  color: #c53030;
-  padding: 0.75rem;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--angry);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(248, 113, 113, 0.2);
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .field {
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .field label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #ccc;
+  color: var(--text-secondary);
   font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .field input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #333;
-  border-radius: 6px;
-  background: #2a2a2a;
-  color: #fff;
-  outline: none;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-glass);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .field input:focus {
-  border-color: #646cff;
+  outline: none;
+  border-color: var(--accent-primary);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
 }
 
 .submitBtn {
+  margin-top: 1rem;
   width: 100%;
-  padding: 0.8rem;
-  background: #646cff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.submitBtn:hover:not(:disabled) {
-  background: #535bf2;
-}
-
-.submitBtn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+  padding: 1rem;
+  font-size: 1.1rem;
 }
 
 .redirect {
-  margin-top: 1.5rem;
   text-align: center;
-  color: #aaa;
+  color: var(--text-secondary);
   font-size: 0.9rem;
+  margin-top: 1rem;
 }
 
 .redirect a {
-  color: #646cff;
-  text-decoration: none;
+  color: var(--accent-secondary);
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
 .redirect a:hover {
+  color: var(--accent-primary);
   text-decoration: underline;
 }

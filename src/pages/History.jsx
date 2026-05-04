@@ -26,9 +26,14 @@ export default function History() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Emotion History</h2>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Emotion History</h2>
+        <p className={styles.subtitle}>Your securely saved emotional records</p>
+      </div>
       {history.length === 0 ? (
-        <p className={styles.empty}>No emotion data saved yet.</p>
+        <div className={styles.empty}>
+          <p>No emotion data saved yet. Head to the dashboard to start tracking!</p>
+        </div>
       ) : (
         <div className={styles.grid}>
           {history.map((item) => (
@@ -43,8 +48,21 @@ export default function History() {
               </div>
               <div className={styles.details}>
                 <h3 className={styles.emotionName}>{item.emotion}</h3>
-                <p className={styles.confidence}>Confidence: {(item.confidence * 100).toFixed(1)}%</p>
-                <p className={styles.time}>{new Date(item.timestamp).toLocaleString()}</p>
+                <div className={styles.confidenceContainer}>
+                  <p className={styles.confidenceText}>
+                    <span>Confidence</span>
+                    <span>{(item.confidence * 100).toFixed(1)}%</span>
+                  </p>
+                  <div className={styles.confidenceBar}>
+                    <div 
+                      className={styles.confidenceFill} 
+                      style={{ width: `${item.confidence * 100}%` }}
+                    />
+                  </div>
+                </div>
+                <p className={styles.time}>
+                  {new Date(item.timestamp).toLocaleDateString()} at {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </p>
               </div>
             </div>
           ))}

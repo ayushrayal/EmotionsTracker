@@ -1,35 +1,52 @@
 import { Link } from 'react-router-dom';
+import styles from './Landing.module.css';
 
 export default function Landing() {
   return (
-    <div style={{ padding: '4rem 2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-      <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Emotion Detection App</h1>
-      <p style={{ fontSize: '1.2rem', color: '#555', marginBottom: '2rem' }}>
-        Analyze your facial expressions in real-time and securely track your emotional history.
-      </p>
-      
-      <div style={{ margin: '2rem 0', padding: '2rem', background: '#f8f9fa', borderRadius: '8px' }}>
-        <h3>About the Project</h3>
-        <p style={{ marginTop: '1rem' }}>
-          This project uses advanced machine learning models running entirely in your browser 
-          to protect your privacy while providing accurate emotion detection.
-        </p>
-      </div>
+    <div style={{ overflowX: 'hidden' }}>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.title}>Emotion Detection AI</h1>
+          <p className={styles.subtitle}>
+            Analyze facial expressions in real-time. Secure, private, and powered by advanced browser-based machine learning.
+          </p>
+          <div className={styles.ctaGroup}>
+            <Link to="/signup" className="btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+              Get Started Free
+            </Link>
+            <Link to="/login" className="btn-secondary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+              Sign In
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-        <Link 
-          to="/signup" 
-          style={{ padding: '12px 24px', background: '#007bff', color: 'white', textDecoration: 'none', borderRadius: '5px', fontWeight: 'bold' }}
-        >
-          Sign Up
-        </Link>
-        <Link 
-          to="/login" 
-          style={{ padding: '12px 24px', background: '#6c757d', color: 'white', textDecoration: 'none', borderRadius: '5px', fontWeight: 'bold' }}
-        >
-          Sign In
-        </Link>
-      </div>
+      <section className={styles.features}>
+        <h2 className={styles.sectionTitle}>Why Choose EmotionAI?</h2>
+        <div className={styles.grid}>
+          <div className={`glass-card ${styles.card}`}>
+            <div className={styles.icon}>⚡</div>
+            <h3 className={styles.cardTitle}>Real-time Detection</h3>
+            <p className={styles.cardText}>
+              Experience instantaneous emotion recognition running directly in your browser with virtually zero latency.
+            </p>
+          </div>
+          <div className={`glass-card ${styles.card}`}>
+            <div className={styles.icon}>🎯</div>
+            <h3 className={styles.cardTitle}>High Accuracy</h3>
+            <p className={styles.cardText}>
+              Powered by advanced neural networks capable of detecting subtle micro-expressions with remarkable precision.
+            </p>
+          </div>
+          <div className={`glass-card ${styles.card}`}>
+            <div className={styles.icon}>🔒</div>
+            <h3 className={styles.cardTitle}>Absolute Privacy</h3>
+            <p className={styles.cardText}>
+              Your video stream never leaves your device. All processing happens locally ensuring your data remains completely private.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
