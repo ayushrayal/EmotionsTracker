@@ -20,13 +20,14 @@ export const loginUser = async (email, password) => {
 };
 
 export const signupUser = async (username, email, password) => {
+  console.log('Sending Signup Data:', { username, email, password });
   const res = await fetch(`${API_URL}/auth/signup`, {
     method: 'POST',
     headers: getHeaders(),
     body: JSON.stringify({ username, email, password }),
   });
   const data = await res.json();
-  if (!data.success) throw new Error(data.error);
+  if (!data.success) throw new Error(data.error || 'Signup failed');
   return data;
 };
 

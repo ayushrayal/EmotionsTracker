@@ -14,12 +14,17 @@ const generateToken = (id) => {
 // @access  Public
 exports.signup = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    console.log('Incoming Signup Request Body:', req.body);
+    const { username, email, password } = req.body;
+
+    if (!username || !email || !password) {
+      return res.status(400).json({ success: false, error: 'Missing fields: username, email, and password are required' });
+    }
 
     // Check if user exists
     let user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ success: false, error: 'User already exists' });
+      return res.status(409).json({ success: false, error: 'Email already registered' });
     }
 
     // Hash password
@@ -28,6 +33,7 @@ exports.signup = async (req, res) => {
 
     // Create user
     user = await User.create({
+      username,
       email,
       password: hashedPassword
     });
@@ -39,7 +45,15 @@ exports.signup = async (req, res) => {
       token
     });
   } catch (error) {
-    res.status(400).json({ success: false, error: error.message });
+    console.error('Signup error:', error);
+    
+    // Handle Mongoose validation errors (Invalid format)
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(val => val.message);
+      return res.status(400).json({ success: false, error: `Invalid format: ${messages.join(', ')}` });
+    }
+    
+    res.status(400).json({ success: false, error: error.message || 'Signup failed due to an unexpected error' });
   }
 };
 
